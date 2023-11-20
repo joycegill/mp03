@@ -41,13 +41,14 @@ public class LeftJustified implements TextBlock {
     if (this.max == 0) { // Return empty string when empty
       return "";
     } // if
-    
+
     if (i < 0 || i >= this.block.height()) { // Check that i is in the valid range
       throw new Exception("Error: Invalid row");
     } // if
 
-    if (this.block.width() > this.max) { // If this.max's width is greater than the block's width
-      return this.block.row(i);
+    if (this.block.width() > this.max) { // If the block's width is greater than this.max
+      TextBlock block2 = new Truncated(block, max);
+      return block2.row(i);
     } // if
     else { 
       int pad = this.max - this.block.width(); // Pad the row to left-justify the string

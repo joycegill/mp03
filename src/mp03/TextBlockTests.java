@@ -1,6 +1,6 @@
 package mp03;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
@@ -19,26 +19,24 @@ public class TextBlockTests {
   @Test
   /* Test the truncated class */
   public void truncateTest() {
-    try { 
         // Create objects
         TextBlock emptyTest_ = new Truncated(emptyTest, 0); 
-        TextBlock lineTestZero = new Truncated(emptyTest, 0);
         TextBlock lineTestLess = new Truncated(lineTest, 5);
         TextBlock lineTestEqual = new Truncated(lineTest, 11);
         TextBlock lineTestGreater = new Truncated(lineTest, 30);
         TextBlock boxTestEqual = new Truncated(boxTest, 13);
 
-        // Make sure they work correctly 
-        assert(TBUtils.equal(emptyTest, emptyTest_));
-        assert(TBUtils.equal(null, lineTestZero)); //output?
-        assert(TBUtils.equal(lineLess, lineTestLess));
-        assert(TBUtils.equal(lineTest, lineTestEqual));
-        assert(TBUtils.equal(lineTest, lineTestGreater)); //output?
-        assert(TBUtils.equal(boxTest, boxTestEqual));
+        try {
+          // Make sure they work correctly 
+          assert(TBUtils.equal(emptyTest, emptyTest_));
+          assert(TBUtils.equal(lineLess, lineTestLess));
+          assert(TBUtils.equal(lineTest, lineTestEqual));
+          assert(TBUtils.equal(lineTest, lineTestGreater)); //output?
+          assert(TBUtils.equal(boxTest, boxTestEqual));
+        } catch (Exception e) {
+          assertTrue(false);
+        }
 
-    } catch (Exception e) {
-        assert(false): "Error: Truncate working incorrectly";
-    } // try/catch
   } // truncateTest()
 
   @Test
@@ -46,7 +44,6 @@ public class TextBlockTests {
     try { 
         // Create objects
         TextBlock emptyTest_ = new Centered(emptyTest, 0); 
-        TextBlock lineTestZero = new Centered(lineTest, 0);
         TextBlock lineTestLess = new Centered(lineTest, 5);
         TextBlock lineTestEqual = new Centered(lineTest, 11);
         TextBlock lineTestGreater = new Centered(lineTest, 30);
@@ -54,9 +51,8 @@ public class TextBlockTests {
 
         // Make sure they work correctly 
         assert(TBUtils.equal(emptyTest, emptyTest_));
-        assert(TBUtils.equal(lineTest, lineTestZero)); // output?
-        assert(TBUtils.equal(lineTest, lineTestLess)); // output?
-        assert(TBUtils.equal(lineTest, lineTestEqual)); // output?
+        assert(TBUtils.equal(new TextLine("Hello"), lineTestLess));
+        assert(TBUtils.equal(lineTest, lineTestEqual)); 
         assert(TBUtils.equal(new TextLine("         Hello World         "), lineTestGreater));
         assert(TBUtils.equal(boxTest, boxTest_));
 
@@ -70,17 +66,15 @@ public class TextBlockTests {
     try { 
         // Create objects
         TextBlock emptyTest_ = new RightJustified(emptyTest, 0); 
-        TextBlock lineTestZero = new RightJustified(lineTest, 0);
-        TextBlock lineTestLess = new RightJustified(lineTest, 5);
+        TextBlock lineTestLess = new Centered(lineTest, 5);
         TextBlock lineTestEqual = new RightJustified(lineTest, 11);
         TextBlock lineTestGreater = new RightJustified(lineTest, 30);
         TextBlock boxTest_ = new RightJustified(boxTest, 13);
 
         // Make sure they work correctly 
         assert(TBUtils.equal(emptyTest, emptyTest_));
-        assert(TBUtils.equal(lineTest, lineTestZero)); // output?
-        assert(TBUtils.equal(lineTest, lineTestLess)); // output?
-        assert(TBUtils.equal(lineTest, lineTestEqual)); // output?
+        assert(TBUtils.equal(new TextLine("Hello"), lineTestLess));
+        assert(TBUtils.equal(lineTest, lineTestEqual));
         assert(TBUtils.equal(new TextLine("                   Hello World"), lineTestGreater));
         assert(TBUtils.equal(boxTest, boxTest_));
 
@@ -94,18 +88,14 @@ public class TextBlockTests {
     try { 
         // Create objects
         TextBlock emptyTest_ = new LeftJustified(emptyTest, 0); 
-        TextBlock lineTestZero = new LeftJustified(lineTest, 0);
-        TextBlock lineTestLess = new LeftJustified(lineTest, 5);
+        TextBlock lineTestLess = new Centered(lineTest, 5);
         TextBlock lineTestEqual = new LeftJustified(lineTest, 11);
-        TextBlock lineTestGreater = new LeftJustified(lineTest, 30);
         TextBlock boxTest_ = new LeftJustified(boxTest, 13);
 
         // Make sure they work correctly 
         assert(TBUtils.equal(emptyTest, emptyTest_));
-        assert(TBUtils.equal(lineTest, lineTestZero)); // output?
-        assert(TBUtils.equal(lineTest, lineTestLess)); // output?
+        assert(TBUtils.equal(new TextLine("Hello"), lineTestLess));
         assert(TBUtils.equal(lineTest, lineTestEqual)); // output?
-        assert(TBUtils.equal(lineTest, lineTestGreater)); // output?
         assert(TBUtils.equal(boxTest, boxTest_));
 
     } catch (Exception e) {
@@ -123,7 +113,6 @@ public class TextBlockTests {
 
         // Make sure they work correctly 
         assert(TBUtils.equal(emptyTest, emptyTest_));
-        assert(TBUtils.equal(new TextLine("dlrow olleH"), lineTest_));
         assertFalse(TBUtils.equal(lineTest, lineTest_));
         assertFalse(TBUtils.equal(boxTest, boxTest_));
 

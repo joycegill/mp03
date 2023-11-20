@@ -73,6 +73,11 @@ public class TBUtils {
    * Returns true if the textblocks contain the same line
    */
   public static Boolean equal(TextBlock block1, TextBlock block2) throws Exception {
+    if ((block1 == null)&&(block2 == null)){
+      return true;
+    } else if ((block1 == null) || (block2 == null)){
+      return false;
+    } // if/else
     // Check that both textblocks are the same height
     if (block1.height() != block2.height()) {
       return false;
@@ -92,6 +97,12 @@ public class TBUtils {
    * Returns true if the textblocks were built in the same way
    */ 
   public static Boolean eqv(TextBlock block1, TextBlock block2) {
+    if ((block1 == null)&&(block2 == null)){
+      return true;
+    } else if ((block1 == null) || (block2 == null)){
+      return false;
+    } // if/else
+    
     return block1.getClass().equals(block2.getClass());
   } // eqv(TextBlock, TextBlock)
 
@@ -99,6 +110,12 @@ public class TBUtils {
    * Returns true when the textblocks have the same memory location
    */
   public static Boolean eq(TextBlock block1, TextBlock block2) {
+    if ((block1 == null)&&(block2 == null)){
+      return true;
+    } else if ((block1 == null) || (block2 == null)){
+      return false;
+    } // if/else
+
     return (block1 == block2);
   } // eq(TextBlock, TextBlock)
 

@@ -83,6 +83,9 @@ public class TBExpt {
     // Clean up after ourselves.
     pen.close();
 
+    TextBlock emptyTest = new TextLine("");
+    TextBlock lineTestZero = new Truncated(emptyTest, 0);
+    pen.println(TBUtils.equal(null, lineTestZero));
   } // main(String[])
 
 } // class TBExpt

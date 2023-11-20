@@ -41,8 +41,9 @@ public class Centered implements TextBlock {
       throw new Exception("Error: Invalid row");
     } // if
     if (this.block.width() > this.max) { // If the block's width is greater than this.max
-      return this.block.row(i);
-    } 
+      TextBlock block2 = new Truncated(block, max);
+      return block2.row(i);
+    } // if
     else {
       int center = (this.max - this.block.width()) / 2; // Determine the number of spaces to pad the row
       return TBUtils.spaces(center) + this.block.row(i) + TBUtils.spaces(center);

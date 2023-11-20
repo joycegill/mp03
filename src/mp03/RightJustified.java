@@ -45,9 +45,10 @@ public class RightJustified implements TextBlock {
     if (i < 0 || i >= this.block.height()) { // Check that i is in the valid range
       throw new Exception("Error: Invalid row");
     } // if
-    
+
     if (this.block.width() > this.max) { // If the block's width is greater than this.max
-      return this.block.row(i);
+      TextBlock block2 = new Truncated(block, max);
+      return block2.row(i);
     } // if
     else {
       int pad = this.max - this.block.width(); // Pad the row to right-justify the string
