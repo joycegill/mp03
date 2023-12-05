@@ -1,7 +1,6 @@
 package mp03;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.Test;
 
 /**
@@ -31,7 +30,7 @@ public class TextBlockTests {
       assert(TBUtils.equal(emptyTest, emptyTest_));
       assert(TBUtils.equal(lineLess, lineTestLess));
       assert(TBUtils.equal(lineTest, lineTestEqual));
-      assert(TBUtils.equal(lineTest, lineTestGreater)); //output?
+      assert(TBUtils.equal(lineTest, lineTestGreater)); 
       assert(TBUtils.equal(boxTest, boxTestEqual));
     } catch (Exception e) {
       assertTrue(false);
