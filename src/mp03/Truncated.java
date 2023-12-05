@@ -11,10 +11,10 @@ public class Truncated implements TextBlock {
   // | Fields |
   // +--------+---------------------------------------------------------
 
-  /** The contents in the block */
+  // The contents in the block 
   TextBlock block;
 
-  /** The maximum width of the TextBlock block */
+  // The maximum width of the TextBlock block 
   int max;
 
   // +--------------+---------------------------------------------------
@@ -38,14 +38,17 @@ public class Truncated implements TextBlock {
    * @exception Exception if the precondition is not met
    */
   public String row(int i) throws Exception {
-    if (this.max == 0) { // Return empty string when empty
+    // Return empty string when empty
+    if (this.max == 0) { 
       return "";
     } // if
     
-    if (i < 0 || i >= this.block.height()) { // Check that i is in the valid range
+    // Check that i is in the valid range
+    if (i < 0 || i >= this.block.height()) { 
       throw new Exception("Error: Invalid row");
     } // if
-    else if (this.block.width() < this.max) { // If the block's width is greater than this.max
+    // If the block's width is greater than this.max
+    else if (this.block.width() < this.max) { 
       return this.block.row(i);
     } // else if
     else {
