@@ -10,10 +10,10 @@ public class Centered implements TextBlock {
   // | Fields |
   // +--------+---------------------------------------------------------
   
-  /** The contents in the block */
+  // The contents in the block 
   TextBlock block;
 
-  /** The width of the block */
+  // The width of the block 
   int max;
 
   // +--------------+---------------------------------------------------
@@ -37,23 +37,28 @@ public class Centered implements TextBlock {
       return "";
     } // if
 
-    if (i < 0 || i >= this.block.height()) { // Check that i is in the valid range
+    // Check that i is in the valid range
+    if (i < 0 || i >= this.block.height()) { 
       throw new Exception("Error: Invalid row");
     } // if
-    if (this.block.width() > this.max) { // If the block's width is greater than this.max
+    // If the block's width is greater than this.max
+    if (this.block.width() > this.max) { 
       TextBlock block2 = new Truncated(block, max);
       return block2.row(i);
     } // if
+    // Determine the number of spaces to pad the row
     else {
-      int center = (this.max - this.block.width()) / 2; // Determine the number of spaces to pad the row
+      int center = (this.max - this.block.width()) / 2; 
       return TBUtils.spaces(center) + this.block.row(i) + TBUtils.spaces(center);
     } // if/else
   } // row(int)
 
+  /** Determine how many rows are in the block */
   public int width() {
     return this.block.width();
   } // width()
 
+  /** Determine how many columns are in this block */
   public int height() {
     return this.block.height();
   } // height()
