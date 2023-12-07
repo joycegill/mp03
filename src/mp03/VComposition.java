@@ -57,9 +57,11 @@ public class VComposition
     // Determine padding
     String padtop = "";
     String padbot = "";
+
+    // If the top is wider
     if (tw > bw) {
       padbot = TBUtils.spaces(tw - bw);
-    } // if the top is wider
+    } // if 
     else
     // the bottom is wider
     {

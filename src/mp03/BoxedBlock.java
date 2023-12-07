@@ -67,6 +67,6 @@ public class BoxedBlock implements TextBlock {
    */
   public int width() {
     return 2 + this.contents.width();
-  } // width()a
+  } // width()
 
 } // class BoxedBlock
